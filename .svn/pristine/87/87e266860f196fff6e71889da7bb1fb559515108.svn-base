@@ -1,0 +1,161 @@
+<template>
+  <div class="show">
+    <el-row>
+      <el-col :span="12">
+        <canvas ref="bar" height="400"></canvas>
+      </el-col>
+      <el-col :span="12">
+        <canvas ref="radar" height="400"></canvas>
+      </el-col>
+      <el-col :span="12"></el-col>
+    </el-row>
+  </div>
+</template>
+<script>
+  import echarts from 'echarts'
+  export default {
+    created() {
+      setTimeout(() => {
+        this.initCanvas()
+        this.initBar()
+        this.initRadar()
+      }, 200)
+    },
+    methods: {
+      initCanvas() {
+        this.$refs.bar.width = this.$refs.bar.parentElement.clientWidth
+        this.$refs.radar.width = this.$refs.radar.parentElement.clientWidth
+      },
+      initBar() {
+        const bar = echarts.init(this.$refs.bar)
+
+        let options = {
+          title: {
+            text: '地区雨水蒸发量和降雨量'
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            data: ['蒸发量', '降雨量']
+          },
+          toolbox: {
+            show: true,
+            feature: {
+              dataView: {show: true, readOnly: false},
+              magicType: {show: true, type: ['line', 'bar']},
+              restore: {show: true},
+              saveAsImage: {show: true}
+            }
+          },
+          calculable: true,
+          xAxis: [
+            {
+              type: 'category',
+              data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              gridIndex: 0
+            }
+          ],
+          series: [
+            {
+              name: '蒸发量',
+              type: 'bar',
+              data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+              markPoint: {
+                data: [
+                  {type: 'max', name: '最大值'},
+                  {type: 'min', name: '最小值'}
+                ]
+              },
+              markLine: {
+                data: [
+                  {type: 'average', name: '平均值'}
+                ]
+              }
+            },
+            {
+              name: '降雨量',
+              type: 'bar',
+              data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+              markPoint: {
+                data: [
+                  {type: 'max', name: '最大值'},
+                  {type: 'min', name: '最小值'}
+                ]
+              },
+              markLine: {
+                data: [
+                  {type: 'average', name: '平均值'}
+                ]
+              }
+            }
+          ]
+        }
+
+        bar.setOption(options)
+      },
+      initRadar() {
+        const radar = echarts.init(this.$refs.radar)
+
+        let option = {
+          title: {
+            text: 'Radar图'
+          },
+          tooltip: {},
+          legend: {
+            data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
+          },
+          radar: {
+            // shape: 'circle',
+            name: {
+              textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius: 3,
+                padding: [3, 5]
+              }
+            },
+            indicator: [
+            {name: '销售（sales）', max: 6500},
+            {name: '管理（Administration）', max: 16000},
+            {name: '信息技术（Information Techology）', max: 30000},
+            {name: '客服（Customer Support）', max: 38000},
+            {name: '研发（Development）', max: 52000},
+            {name: '市场（Marketing）', max: 25000}
+            ]
+          },
+          series: [{
+            name: '预算 vs 开销（Budget vs spending）',
+            type: 'radar',
+            data: [
+              {
+                value: [4300, 10000, 28000, 35000, 50000, 19000],
+                name: '预算分配（Allocated Budget）'
+              },
+              {
+                value: [5000, 14000, 28000, 31000, 42000, 21000],
+                name: '实际开销（Actual Spending）'
+              }
+            ]
+          }]
+        }
+
+        radar.setOption(option)
+      }
+    }
+  }
+</script>
+<style scoped lang="stylus">
+  .show
+    text-align: center
+    overflow: hidden
+    .el-row
+      margin-bottom: 20px
+      &:last-child
+        margin-bottom: 0
+</style>

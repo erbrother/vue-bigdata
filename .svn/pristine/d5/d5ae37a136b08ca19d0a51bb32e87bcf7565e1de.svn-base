@@ -1,0 +1,80 @@
+<template>
+  <div class="kafka">
+    <transition-group name="list" tag="ul" id="messages">
+      <li v-for="item in chatMessage" :key="item">{{item}}</li>
+    </transition-group>
+    <form ref="form" action="" @submit.prevent="sendMessage">
+      <input id="m" ref="message" autocomplete="off" required /><button @click.prevent="sendMessage">Send</button>
+    </form>
+  </div>
+</template>
+<script type="script/ecmascript">
+  export default {
+    data() {
+      return {
+        chatMessage: []
+      }
+    },
+    sockets: {
+      connect: function(socket) {
+        this.$notify.success({
+          title: '成功',
+          message: '连接成功',
+          offset: 100
+        });
+      },
+      customEmit: function(val) {
+        console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+      },
+      'message': function(msg) {
+        this.chatMessage.push(msg.value)
+      },
+      'chat message': function(msg) {
+        this.chatMessage.push(msg)
+      }
+    },
+    methods: {
+      sendMessage() {
+        if (this.$refs.message.value === "") return false
+        this.$socket.emit('chat message', this.$refs.message.value)
+        this.$refs.message.value = ""
+      }
+    }
+  }
+</script>
+<style lang="stylus" scoped>
+  .kafka
+    font-size: 12px
+    #messages
+      height: 800px
+      overflow: auto
+      overflow-x: hidden
+      scrollbar-face-color: #b46868
+      list-style-type: none
+      margin: 0
+      padding: 0
+      li
+        padding: 5px 10px
+      li:nth-child(odd)
+        background: #eee
+    form
+      background: #000
+      padding: 3px
+      bottom: 0
+      width: 100%
+      input
+        border: 0
+        padding: 10px
+        width: 87%
+        margin-right: .5%
+      button
+        width: 9%
+        background: rgb(130, 224, 255)
+        border: none
+        padding: 10px
+    .list-enter-active, .list-leave-active
+      transition: all 1s
+    .list-enter, .list-leave-to
+      opacity: 0
+      transform: translateX(30px)
+</style>

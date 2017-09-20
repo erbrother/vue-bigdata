@@ -1,0 +1,78 @@
+# 在Vue.js中使用Stylus预处理器
+
+- 命令行中打cnpm install stylus stylus-loader --save-dev
+
+- 在 .vue文件中使用stylus
+```
+	<style lang="stylus">
+		#app
+			text-align: center
+			color: #fff
+			margin-top: 60px
+	</style>
+```
+
+- 引入styl文件
+	import './assets/base.styl'
+
+keep things dry(保持干净)
+```
+	border-radius()
+		-webkit-border-radius: arguments
+		-moz-border-radius: arguments
+		border-radius: arguments
+
+	body
+		font: 12px Helvetica, Arial, sans-serif
+
+	a.button
+		border-radius(5px)
+```
+
+- 在表达式中定义变量
+```
+	font-size = 14px
+
+	body
+	  font font-size Arial, sans-serif
+```
+
+- 属性查找
+```
+ #logo
+   position: absolute
+   top: 50%
+   left: 50%
+   width: w = 150px
+   height: h = 80px
+   margin-left: -(w / 2)
+   margin-top: -(h / 2)
+```
+	除了分配变量w和h，我们可以简单地将@字符添加到属性名称以访问该值
+```
+ #logo
+  position: absolute
+  top: 50%
+  left: 50%
+  width: 150px
+  height: 80px
+  margin-left: -(@width / 2)
+  margin-top: -(@height / 2)
+```
+
+- interpolution(插值)
+```
+  vendor(prop, args)
+    -webkit-{prop} args
+    -moz-{prop} args
+    {prop} args
+
+  border-radius()
+    vendor('border-radius', arguments)
+  
+  box-shadow()
+    vendor('box-shadow', arguments)
+
+  button
+    border-radius 1px 2px / 3px 4px
+```

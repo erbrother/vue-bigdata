@@ -1,0 +1,29 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+// import index from 'components/index'
+import home from 'components/home'
+import show from 'components/show'
+import setting from 'components/setting'
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      redirect: '/home'
+    },
+    {
+      path: '/home',
+      component: home
+    },
+    {
+      path: '/show',
+      component: show
+    },
+    {
+      path: '/setting',
+      component: setting
+    }
+  ]
+})

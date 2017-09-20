@@ -1,0 +1,55 @@
+<template>
+  <div id="app">
+    <HeaderComponent @pick="timePick"></HeaderComponent>
+    <nav-slider ref="nav" @widthChange="widthChange"></nav-slider>
+    <keep-alive>
+      <router-view class="content" ref="content"></router-view>
+    </keep-alive>
+  </div>
+</template>
+
+<script>
+  import navSlider from 'components/nav'
+  import HeaderComponent from 'components/header'
+  export default {
+    data() {
+      return {
+        navWidth: ''
+      }
+    },
+    mounted() {
+    },
+    methods: {
+      widthChange(width) {
+        setTimeout(() => {
+          this.$refs.content.$el.style.paddingLeft = width + 10 + 'px'
+        }, 200)
+      },
+      timePick(time) {
+        console.log(time)
+      }
+    },
+    watch: {
+    },
+    components: {
+      navSlider,
+      HeaderComponent
+    }
+  }
+</script>
+
+<style lang="stylus" rel="stylesheet/stylus">
+@import 'common/stylus/index'
+#app
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  .content
+    position: absolute
+    top: 72px
+    bottom: 0
+    width: 100%
+    padding-left: 210px
+    padding-top: 10px
+    z-index: -1
+</style>

@@ -1,0 +1,46 @@
+在src目录下创建router文件夹,创建index.js, 代码如下：
+```
+	// 导入vue
+	import Vue from 'vue'
+	// 导入vue-router
+	import Router from 'vue-router'
+	//导入各个路由的组件
+	import home from 'components/home'
+	import show from 'components/show'
+	import setting from 'components/setting'
+	//在vue中注册router实力
+	Vue.use(Router)
+
+	// 将vue实例暴露出去
+	export default new Router({
+	  routes: [
+	    {
+	      path: '/', //路由路径
+	      redirect: '/home' //重定向
+	    },
+	    {
+	      path: '/home', 
+	      component: home //组件
+	    },
+	    {
+	      path: '/show',
+	      component: show
+	    },
+	    {
+	      path: '/setting',
+	      component: setting
+	    }
+	  ]
+	})
+```
+
+在src目录下的写入：
+	// 导入router组件
+	import router from './router'
+
+	new Vue({
+		el: '#app',
+		router, //在vue实例中导入
+		render: h => h(App)
+	})
+

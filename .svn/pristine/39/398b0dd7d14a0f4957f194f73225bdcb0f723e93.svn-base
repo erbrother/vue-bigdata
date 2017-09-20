@@ -1,0 +1,81 @@
+<template>
+  <el-menu  :default-active="$route.path" class="el-menu-vertical-demo" :collapse="isCollapse" :router="router" ref="nav">
+    <el-submenu index="1">
+      <template slot="title">
+        <i class="el-icon-message"></i>
+        <span slot="title">展示</span>
+      </template>
+      <el-menu-item-group>
+        <el-menu-item index="/home">图表</el-menu-item>
+        <el-menu-item index="/kafka">kafka实时数据</el-menu-item>
+      </el-menu-item-group>
+    </el-submenu>
+    <el-menu-item index="/show">
+      <i class="el-icon-menu"></i>
+      <span slot="title">雷达图</span>
+    </el-menu-item>
+    <el-menu-item index="/setting">
+      <i class="el-icon-setting"></i>
+      <span slot="title">数据图</span>
+    </el-menu-item>
+    <div class="menuCollapse" @click="showCollapse">
+      <i :class="iconLeft"></i>
+    </div>
+  </el-menu> 
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        isCollapse: false,
+        router: true
+      }
+    },
+    computed: {
+      iconLeft() {
+        return this.isCollapse ? 'el-icon-arrow-right' : 'el-icon-arrow-left'
+      }
+    },
+    watch: {
+      iconLeft(newVal) {
+        console.log(newVal)
+      }
+    },
+    methods: {
+      showCollapse() {
+        var width
+        if (!this.isCollapse) {
+          this.isCollapse = true
+          width = 64
+        } else {
+          this.isCollapse = false
+          width = 200
+        }
+
+        this.$emit('widthChange', width)
+      }
+    }
+  }
+</script>
+
+<style>
+  .el-menu-vertical-demo, .el-menu-vertical-demo:not(.el-menu--collapse){
+    position: absolute;
+    top: 72px;
+    left: 0;
+    bottom: 0;
+  }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+  }
+  .menuCollapse {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0px 20px;
+    height: 43px;
+    line-height: 43px;
+    text-align: right;
+    cursor: pointer;
+  }
+</style>
