@@ -9,8 +9,66 @@
       <div class="wraper" style="top: 72px; left: 16px;">
         <div class="wraper-item wraper-image-topL" style="width: 751px; height: 441px;"></div>
       </div>
+      <div class="wraper" style="top: 82px; left: 26px;">
+        <div class="wraper-item wraper-image-topL" style="width: 751px; height: 441px;"></div>
+      </div>      
       <div class="wraper" style="left: 1072px; top: 568px">
         <div class="wraper-item wraper-image-bottomR" style="width:832px; height: 498px;"></div>
+      </div>
+    </div>
+    <!-- 小标题区域 -->
+    <div class="small-title">
+      <div class="wraper" style="top: 152px; left: 72px;">
+        <div class="wraper-item wraper-item-title" style="width: 464px;">MaxCompute任务总数
+        </div>
+      </div>
+      <div class="wraper" style="top: 472px; left: 72px;">
+        <div class="wraper-item wraper-item-title" style="width: 255px;">任务分布类型
+        </div>
+      </div>
+      <div class="wraper" style="top: 472px; left: 352px;">
+        <div class="wraper-item wraper-item-title" style="width: 191px;">成功任务比例
+        </div>
+      </div>
+      <div class="wraper" style="top: 736px; left: 72px;">
+        <div class="wraper-item wraper-item-title" style="width: 464px;">数据表总数
+        </div>
+      </div>
+      <div class="wraper" style="top: 152px; left: 592px;">
+        <div class="wraper-item wraper-item-title" style="width: 375px;">运行耗时最长任务
+        </div>
+      </div>
+      <div class="wraper" style="top: 736px; left: 584px;">
+        <div class="wraper-item wraper-item-title" style="width: 375px;">表平均容量
+        </div>
+      </div>
+      <div class="wraper" style="top: 888px; left: 584px;">
+        <div class="wraper-item wraper-item-title" style="width: 375px;">表平均容量
+        </div>
+      </div>
+      <div class="wraper" style="top: 152px; left: 1032px;">
+        <div class="wraper-item wraper-item-title" style="width: 350px;">资源消耗最大任务
+        </div>
+      </div>
+      <div class="wraper" style="top: 736px; left: 1032px;">
+        <div class="wraper-item wraper-item-title" style="width: 360px;">表存储容量
+        </div>
+      </div>
+      <div class="wraper" style="top: 152px; left: 1448px;">
+        <div class="wraper-item wraper-item-title" style="width: 409px;">计算资源消耗
+        </div>
+      </div>
+      <div class="wraper" style="top: 408px; left: 1448px;">
+        <div class="wraper-item wraper-item-title" style="width: 409px;">磁盘总空间/利用率
+        </div>
+      </div>
+      <div class="wraper" style="top: 600px; left: 1448px;">
+        <div class="wraper-item wraper-item-title" style="width: 409px;">在线结点数/结点率
+        </div>
+      </div>
+      <div class="wraper" style="top: 856px; left: 1448px;">
+        <div class="wraper-item wraper-item-title" style="width: 409px;">内存总数/利用率
+        </div>
       </div>
     </div>
   </div>
@@ -80,6 +138,15 @@
       .wraper-item
         background-repeat: no-repeat;
         background-size: 100% 100%;
+      .wraper-item-title
+        background-image: url("img/titlebc.png")
+        font-weight: normal
+        color: rgb(255, 255, 255)
+        font-family: "Microsoft Yahei"
+        font-size: 18px
+        height: 40px
+        line-height:40px
+        padding-left: 20px
       .wraper-image-topL
         background-image: url("img/topleft.png")
       .wraper-image-bottomR
