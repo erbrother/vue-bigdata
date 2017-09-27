@@ -70,13 +70,13 @@
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  .content
-    position: absolute
-    top: 72px
-    bottom: 0
-    width: 100%
-    padding-left: 210px
-    padding-top: 10px
-    overflow:hidden
-    z-index: -1
+.content
+  position: absolute
+  top: 72px
+  bottom: 0
+  width: 100%
+  padding-left: 210px
+  padding-top: 10px
+  overflow:hidden
+  z-index: -1
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="kafka" :style="client">
+  <container id="kafka">
     <!-- 四个边框组 -->
     <div class="border">
       <div class="wraper" style="left: -152px;top: -16px;width: 508px;height: 264px;z-index: 0;">
@@ -87,10 +87,11 @@
         <canvas ref="barLine" width="664" height="320"></canvas>
       </div>
     </div>    
-  </div>
+  </container>
 </template>
 <script type="script/ecmascript">
   import echarts from 'echarts'
+  import container from 'base/container/container'
   import {getTime, shuffle} from 'common/js/util.js'
   import china from 'echarts/map/js/china.js'
   import {geoCoordMap} from 'common/js/geoCoordMap.js'
@@ -98,12 +99,6 @@
   export default {
     data() {
       return {
-        clientHeight: '',
-        client: {
-          width: '',
-          height: '',
-          transform: ''
-        },
         chatMessage: [],
         time: getTime(),
         cpuData: {
@@ -141,16 +136,6 @@
         this._initMemor()
         this._initBarLine()
       }, 2000)
-
-      const that = this
-      this.client.height = `${window.screen.height}px`
-      this.client.width = `${window.screen.width}px`
-      this.client.transform = `scale(${window.innerWidth / window.screen.width}, ${window.innerHeight / window.screen.height})`
-
-      // 监听window的resize事件
-      window.onresize = function resize() {
-        that.client.transform = `scale(${window.innerWidth / window.screen.width}, ${window.innerHeight / window.screen.height})`
-      }
     },
     // sockets: {
     //   connect: function(socket) {
@@ -719,22 +704,15 @@
       //   this.$socket.emit('chat message', this.$refs.message.value)
       //   this.$refs.message.value = ""
       // }
-
+    },
+    components: {
+      container
     }
   }
 </script>
 <style lang="stylus" scoped>
   #kafka
-    font-size: 12px
-    position: fixed !important
-    top: 0
-    left: 0
-    padding: 0
-    margin: 0
-    z-index: 999
     background: url("img/background.png") 0% 0%
-    background-size: 100% 100%
-    transform-origin: left top 0px
     #messages
       height: 800px
       overflow: auto
