@@ -34,7 +34,6 @@
     padding: 0 !important
     margin: 0 !important
     z-index: 999 !important
-    background: #0d2a42
     background-size: 100% 100%
     transform-origin: left top 0px
 </style>

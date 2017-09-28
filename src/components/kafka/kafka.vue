@@ -149,10 +149,12 @@
     //     console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
     //   },
     //   'message': function(msg) {
-    //     this.chatMessage.push(msg.value)
+    //     console.log(`message: ${msg.value}`)
+    //     // this.chatMessage.push(msg.value)
     //   },
     //   'chat message': function(msg) {
-    //     this.chatMessage.push(msg)
+    //     console.log(msg)
+    //     // this.chatMessage.push(msg)
     //   }
     // },
     methods: {
