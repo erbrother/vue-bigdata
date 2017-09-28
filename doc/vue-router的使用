@@ -1,6 +1,6 @@
 在src目录下创建router文件夹,创建index.js, 代码如下：
 ```
-	// 导入vue
+	// 导入1个vue
 	import Vue from 'vue'
 	// 导入vue-router
 	import Router from 'vue-router'
