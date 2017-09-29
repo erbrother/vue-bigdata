@@ -3,7 +3,7 @@
     <slot></slot>
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   export default {
     data() {
       return {
@@ -16,11 +16,11 @@
     },
     mounted() {
       const that = this
-      this.client.height = `${window.screen.height}px`
-      this.client.width = `${window.screen.width}px`
-      this.client.transform = `scale(${window.innerWidth / window.screen.width}, ${window.innerHeight / window.screen.height})`
+      this.client.height = `1080px`
+      this.client.width = `1920px`
+      this.client.transform = `scale(${window.innerWidth / 1920}, ${window.innerHeight / 1080})`
       window.onresize = function resize() {
-        that.client.transform = `scale(${window.innerWidth / window.screen.width}, ${window.innerHeight / window.screen.height})`
+        that.client.transform = `scale(${window.innerWidth / 1920}, ${window.innerHeight / 1080})`
       }
     }
   }
