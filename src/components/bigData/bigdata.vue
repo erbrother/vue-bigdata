@@ -715,7 +715,7 @@
 </script>
 <style scoped lang="stylus">
   .ct-back
-    background-color: #fff
+    background-color: #0d2a42
   .wraper
     position: absolute !important
     margin: 0 !important
