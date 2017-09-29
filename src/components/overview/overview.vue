@@ -58,6 +58,4 @@
       top: 30px
       right: 10px
       color: rgb(46, 147, 255)
-    .borderTop
-      
 </style>
