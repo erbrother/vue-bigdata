@@ -6,20 +6,19 @@
        </div>
     </container>
 </template>
-<script type="script/ecmascript">
-import echarts from 'echarts'
-import {shuffle} from 'common/js/util.js'
-import container from 'base/container/container'
+<script type="text/ecmascript-6">
+  import echarts from 'echarts'
+  import {shuffle} from 'common/js/util.js'
+  import container from 'base/container/container'
 
-export default{
-    data(){
+  export default{
+    data() {
       return{
-          myData:{
-            inst: Function,
-            val: [500, 100, 300, 800, 280]
-          }
+        myData:{
+          inst: Function,
+          val: [500,100, 300, 800, 280]
+        }
       }
-      
     },
     mounted(){
       this.myData.inst = echarts.init(this.$refs.mycanvas)
@@ -32,15 +31,33 @@ export default{
     },
     methods:{
       _initmy(){
-
+         var  xAxisData = ['内蒙古', '浙江', '北京', '郑州', '成都']
+         let  option = {
+             xAxis:[{
+               type:'category',
+               data:xAxisData,
+               axisLine:{
+                 show:false
+               },
+               axisLabel:{
+                  textStyle:{
+                     color: 'rab(255,255,255)'
+                  }
+               },
+               splitLine:{
+                show:false
+               }
+             },{
+               show:false,
+               data:x
+             }]
+         }
       }
-
-    }
+    },
     components: {
       container
     }
-}
-
+  }
 </script>
 <style  lang="stylus" scoped>
 #kafka2
