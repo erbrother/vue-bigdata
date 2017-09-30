@@ -405,35 +405,34 @@ export default{
 }
 </script>
 <style  lang="stylus" scoped>
-#kafka2
-  background: url("img/bg1.png")
-  .header-con
-    position:relative;
-    .title
-     text-align:center;
-     font-size:48px;
-     color:#fff;
-    .time
-      height:50px;
-      font-size:18px;
-      color:rgb(93, 245, 244);
-      position:absolute;
-      right:50px;
-      top:30px;
-  .title-con
-    display: -webkit-flex;
-    display:flex;
-    margin:20px 20px;
-    font-size:36px;
-    color:#fff;
-    .title-info
-      width:25%;
-      text-align:center;
-  .chart-con
-    display:-webkit-flex;
-    display:flex;
-    margin:20px 150px;
-    .wraper-chart
-      width:50%;
-
+  #kafka2
+    background: url("img/bg1.png")
+    .header-con
+      position:relative;
+      .title
+       text-align:center;
+       font-size:48px;
+       color:#fff;
+      .time
+        height:50px;
+        font-size:18px;
+        color:rgb(93, 245, 244);
+        position:absolute;
+        right:50px;
+        top:30px;
+    .title-con
+      display: -webkit-flex;
+      display:flex;
+      margin:20px 20px;
+      font-size:36px;
+      color:#fff;
+      .title-info
+        width:25%;
+        text-align:center;
+    .chart-con
+      display:-webkit-flex;
+      display:flex;
+      margin:20px 150px;
+      .wraper-chart
+        width:50%;
 </style>
