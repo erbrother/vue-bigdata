@@ -173,7 +173,7 @@
     </div>
   </container>
 </template>
-<script>
+<script type="text/ecmascript-6">
   import echarts from 'echarts'
   import container from 'base/container/container'
 

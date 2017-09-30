@@ -5,6 +5,7 @@ import show from 'components/show'
 import setting from 'components/setting'
 import kafka from 'components/kafka/kafka'
 import bigdata from 'components/bigData/bigdata'
+import overview from 'components/overview/overview'
 import kafka2 from 'components/kafka2/kafka2'
 
 Vue.use(Router)
@@ -34,6 +35,10 @@ export default new Router({
     {
       path: '/bigdata',
       component: bigdata
+    },
+    {
+      path: '/overview',
+      component: overview
     },
     {
       path: '/kafka2',

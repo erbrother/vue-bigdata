@@ -89,11 +89,11 @@
     </div>    
   </container>
 </template>
-<script type="script/ecmascript">
+<script type="text/ecmascript-6">
   import echarts from 'echarts'
   import container from 'base/container/container'
   import {getTime, shuffle} from 'common/js/util.js'
-  import china from 'echarts/map/js/china.js'
+  // import china from 'echarts/map/js/china.js'
   import {geoCoordMap} from 'common/js/geoCoordMap.js'
   
   export default {
@@ -162,15 +162,15 @@
         const map = echarts.init(this.$refs.map)
 
         var BJData = [
-          [{name: '上海',value:100}, {name: '北京'}],
-          [{name: '广州',value:70}, {name: '北京'}],
-          [{name: '哈尔滨',value:30}, {name: '北京'}],
-          [{name: '青岛',value:50}, {name: '北京'}],
-          [{name: '南昌',value:20}, {name: '北京'}],
-          [{name: '银川',value:10}, {name: '北京'}],
-          [{name: '拉萨',value:80}, {name: '北京'}],
-          [{name: '西安',value:55}, {name: '北京'}],
-          [{name: '乌鲁木齐',value:90}, {name: '北京'}]
+          [{name: '上海', value: 100}, {name: '北京'}],
+          [{name: '广州', value: 70}, {name: '北京'}],
+          [{name: '哈尔滨', value: 30}, {name: '北京'}],
+          [{name: '青岛', value: 50}, {name: '北京'}],
+          [{name: '南昌', value: 20}, {name: '北京'}],
+          [{name: '银川', value: 10}, {name: '北京'}],
+          [{name: '拉萨', value: 80}, {name: '北京'}],
+          [{name: '西安', value: 55}, {name: '北京'}],
+          [{name: '乌鲁木齐', value: 90}, {name: '北京'}]
         ]
 
         var convertData = function(data) {
@@ -180,21 +180,18 @@
             var fromCoord = geoCoordMap[dataItem[0].name]
             var toCoord = geoCoordMap[dataItem[1].name]
             if (fromCoord && toCoord) {
-              res.push([
-              {
-                coord:fromCoord,
+              res.push([{
+                coord: fromCoord,
                 value: dataItem[0].value
-              },
-              {
-                coord: toCoord,
-              }
-              ]);
+              }, {
+                coord: toCoord
+              }])
             }
           }
           return res
         }
 
-        var color = ['#a6c84c', '#ffa022', '#46bee9']
+        // var color = ['#a6c84c', '#ffa022', '#46bee9']
         var series = []
         var arr = [['北京', BJData]]
         arr.forEach(function(item, i) {
@@ -203,10 +200,10 @@
             zlevel: 3,
             effect: {
               show: true,
-              period: 4, 
+              period: 4,
               trailLength: 0.02,
-              symbol:'arrow',
-              symbolSize: 5,
+              symbol: 'arrow',
+              symbolSize: 5
             },
             lineStyle: {
               normal: {
@@ -217,13 +214,12 @@
             },
 
             data: convertData(item[1])
-          },
-          {
+          }, {
             type: 'effectScatter',
             coordinateSystem: 'geo',
             zlevel: 2,
             rippleEffect: {
-              period:4,
+              period: 4,
               brushType: 'stroke',
               scale: 4
             },
@@ -231,7 +227,7 @@
               normal: {
                 show: true,
                 position: 'right',
-                offset:[5, 0],
+                offset: [5, 0],
                 formatter: '{b}'
               },
               emphasis: {
@@ -240,7 +236,7 @@
             },
             symbol: 'circle',
             symbolSize: function (val) {
-              return 4 + val[2] / 10;
+              return 4 + val[2] / 10
             },
             itemStyle: {
               normal: {
@@ -252,16 +248,14 @@
               return {
                 name: dataItem[0].name,
                 value: geoCoordMap[dataItem[0].name].concat([dataItem[0].value])
-              };
-            }),
-          },
-          //被攻击点
-          {
+              }
+            })
+          }, {
             type: 'scatter',
             coordinateSystem: 'geo',
             zlevel: 2,
             rippleEffect: {
-              period:4,
+              period: 4,
               brushType: 'stroke',
               scale: 4
             },
@@ -269,10 +263,10 @@
               normal: {
                 show: true,
                 position: 'right',
-                color:'#00ffff',
+                color: '#00ffff',
                 formatter: '{b}',
                 textStyle: {
-                  color:"#00ffff"
+                  color: '#00ffff'
                 }
               },
               emphasis: {
@@ -280,28 +274,28 @@
               }
             },
             symbol: 'pin',
-            symbolSize:30,
+            symbolSize: 30,
             itemStyle: {
               normal: {
                 show: true,
                 color: '#9966cc'
               }
             },
-            data:[{
+            data: [{
               name: item[0],
-              value: geoCoordMap[item[0]].concat([100]),
-            }],
-          });
+              value: geoCoordMap[item[0]].concat([100])
+            }]
+          })
         })
 
         let option = {
           visualMap: {
-            min : 0,
-            max : 100,
-            calculable : true,
+            min: 0,
+            max: 100,
+            calculable: true,
             color: ['#ff3333', 'orange', 'yellow', 'lime', 'aqua'],
-            textStyle:{
-              color:'#fff'
+            textStyle: {
+              color: '#fff'
             }
           },
           geo: {
@@ -315,7 +309,7 @@
             roam: true,
             aspectScale: 1,
             layoutCenter: ['50%', '55%'],
-            layoutSize: "150%",
+            layoutSize: '150%',
             itemStyle: {
               normal: {
                 color: 'rgba(51, 69, 89, .5)',
@@ -326,86 +320,84 @@
               }
             }
           },
-          
           series: series
-        };
+        }
 
         map.setOption(option)
       },
       _initCpu() {
         var xAxisData = ['内蒙古', '浙江', '北京', '郑州', '成都']
         let option = {
-            xAxis: [{
-                type: 'category',
-                data: xAxisData,
-                axisLine: {
-                  show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: 'rgb(255, 255, 255)'
-                    }
-                },
-                splitLine: {
-                    show: false
-                }
+          xAxis: [{
+            type: 'category',
+            data: xAxisData,
+            axisLine: {
+              show: false
+            },
+            axisLabel: {
+              textStyle: {
+                color: 'rgb(255, 255, 255)'
+              }
+            },
+            splitLine: {
+              show: false
+            }
+          }, {
+            // 辅助 x 轴
+            show: false,
+            data: xAxisData
+          }],
+          yAxis: {
+            max: 1000,
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: 'rgb(255, 255, 255)'
+              }
+            },
+            axisLabel: {
+              textStyle: {
+                color: 'rgb(255, 255, 255)'
+              }
+            },
+            splitLine: {
+              show: false
+            }
+          },
+          visualMap: {
+            show: false,
+            pieces: [{
+              lte: 400,
+              color: 'rgb(0, 255, 145)'
             }, {
-                // 辅助 x 轴
-                show: false,
-                data: xAxisData  
-            }],
-            yAxis: {
-                max: 1000,
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                      color: 'rgb(255, 255, 255)'
-                    }
-                },
-                axisLabel: {
-                  textStyle: {
-                    color: 'rgb(255, 255, 255)'
-                  }
-                },
-                splitLine: {
-                  show: false
-                }
-            },
-            visualMap: {
-              show: false,
-              pieces: [{
-                lte: 400, 
-                color: 'rgb(0, 255, 145)'
-              }, {
-                gt: 400, 
-                color: 'red'
-              }],
-
-            },
-            series: [{
-                type: 'bar',
-                data: this.cpuData.val,
-                barWidth: 40,
-                itemStyle: {
-                    normal: {
-                        barBorderRadius: 5,
-                        color: '#00c9ff',
-                        shadowColor: 'rgba(0, 0, 0, 0.4)',
-                        shadowBlur: 20
-                    }
-                }
+              gt: 400,
+              color: 'red'
             }]
+          },
+          series: [{
+            type: 'bar',
+            data: this.cpuData.val,
+            barWidth: 40,
+            itemStyle: {
+              normal: {
+                barBorderRadius: 5,
+                color: '#00c9ff',
+                shadowColor: 'rgba(0, 0, 0, 0.4)',
+                shadowBlur: 20
+              }
+            }
+          }]
         }
         this.cpuData.inst.setOption(option)
       },
       _initMemor() {
         let option = {
           color: ['rgb(0, 255, 145)'],
-          tooltip : {
+          tooltip: {
             trigger: 'axis',
-            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-              }
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+              type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
           },
           grid: {
             left: '3%',
@@ -413,9 +405,9 @@
             bottom: '3%',
             containLabel: true
           },
-          xAxis : [{
-            type : 'category',
-            data : ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天'],
+          xAxis: [{
+            type: 'category',
+            data: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天'],
             axisLine: {
               show: false
             },
@@ -431,8 +423,8 @@
               alignWithLabel: true
             }
           }],
-          yAxis : [{
-            type : 'value',
+          yAxis: [{
+            type: 'value',
             axisLine: {
               show: true,
               lineStyle: {
@@ -449,14 +441,14 @@
               textStyle: {
                 color: 'rgb(255, 255, 255)'
               }
-            },
+            }
           }],
-          series : [{
-            name:'直接访问',
-            type:'bar',
+          series: [{
+            name: '直接访问',
+            type: 'bar',
             barWidth: '60%',
             data: this.memorData.val
-          }]          
+          }]
         }
         this.memorData.inst.setOption(option)
       },
@@ -468,7 +460,7 @@
             textStyle: {
               color: '#fff'
             },
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
           },
           legend: {
             orient: 'horizontal',
@@ -517,7 +509,7 @@
               value: 1548,
               name: 'java'
             }]
-          }]          
+          }]
         }
         map.setOption(option)
       },
@@ -553,16 +545,13 @@
           series: [{
             name: '预算 vs 开销',
             type: 'radar',
-            data: [
-            {
+            data: [{
               value: [4300, 10000, 28000, 35000, 50000, 19000],
               name: '预算分配'
-            },
-            {
+            }, {
               value: [5000, 14000, 28000, 31000, 42000, 21000],
               name: '实际开销'
-            }
-            ]
+            }]
           }]
         }
 
@@ -617,90 +606,90 @@
         var xAxisData = ['2月', '3月', '4月', '5月', '6月', '7月', '8月']
         var data = []
         for (var i = 9; i < 16; i++) {
-            data.push(Math.round(Math.random() * 500) + 200);
+          data.push(Math.round(Math.random() * 500) + 200)
         }
         let option = {
-            xAxis: [{
-                type: 'category',
-                data: xAxisData,
-                axisLine: {
-                  show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: 'rgb(255, 255, 255)'
-                    }
-                },
-                splitLine: {
-                    show: false
-                }
-            }, {
-                // 辅助 x 轴
-                show: false,
-                data: xAxisData  
-            }],
-            yAxis: {
-                max: 1000,
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                      color: 'rgb(255, 255, 255)'
-                    }
-                },
-                axisLabel: {
-                  textStyle: {
-                    color: 'rgb(255, 255, 255)'
-                  }
-                },
-                splitLine: {
-                  show: false
-                }
+          xAxis: [{
+            type: 'category',
+            data: xAxisData,
+            axisLine: {
+              show: false
             },
-            series: [{
-              // 辅助系列
-              type: 'bar',
-              silent: true,
-              xAxisIndex: 1,
-              itemStyle: {
-                  normal: {
-                      color: 'rgba(36, 254, 180, 0.18)'      
-                  }
-              },
-              barWidth: 40,
-              data: data.map((val) => {
-                  return 1000;
-              })
-            }, {
-              type: 'bar',
-              data: this.barLineData.val,
-              barWidth: 40,
-              itemStyle: {
-                  normal: {
-                      color: 'rgb(36, 254, 180)',
-                      shadowColor: 'rgba(0, 0, 0, 0.4)',
-                      shadowBlur: 20
-                  }
+            axisLabel: {
+              textStyle: {
+                color: 'rgb(255, 255, 255)'
               }
-            }, {
-              type: 'line',
-              data: this.barLineData.val,
+            },
+            splitLine: {
+              show: false
+            }
+          }, {
+            // 辅助 x 轴
+            show: false,
+            data: xAxisData
+          }],
+          yAxis: {
+            max: 1000,
+            axisLine: {
+              show: true,
               lineStyle: {
-                normal: {
-                  color: '#fff',
-                  width: 4
-                }
-              },
-              itemStyle: {
-                normal: {
-                  color: '#fff',
-                  borderColor: '#fff',
-                  borderWidth: 8
-                }
+                color: 'rgb(255, 255, 255)'
               }
-            }]
+            },
+            axisLabel: {
+              textStyle: {
+                color: 'rgb(255, 255, 255)'
+              }
+            },
+            splitLine: {
+              show: false
+            }
+          },
+          series: [{
+            // 辅助系列
+            type: 'bar',
+            silent: true,
+            xAxisIndex: 1,
+            itemStyle: {
+              normal: {
+                color: 'rgba(36, 254, 180, 0.18)'
+              }
+            },
+            barWidth: 40,
+            data: data.map((val) => {
+              return 1000
+            })
+          }, {
+            type: 'bar',
+            data: this.barLineData.val,
+            barWidth: 40,
+            itemStyle: {
+              normal: {
+                color: 'rgb(36, 254, 180)',
+                shadowColor: 'rgba(0, 0, 0, 0.4)',
+                shadowBlur: 20
+              }
+            }
+          }, {
+            type: 'line',
+            data: this.barLineData.val,
+            lineStyle: {
+              normal: {
+                color: '#fff',
+                width: 4
+              }
+            },
+            itemStyle: {
+              normal: {
+                color: '#fff',
+                borderColor: '#fff',
+                borderWidth: 8
+              }
+            }
+          }]
         }
-        this.barLineData.inst.setOption(option)        
-      },
+        this.barLineData.inst.setOption(option)
+      }
       // sendMessage() {
       //   if (this.$refs.message.value === "") return false
       //   this.$socket.emit('chat message', this.$refs.message.value)
