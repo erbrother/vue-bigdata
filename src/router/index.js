@@ -7,6 +7,8 @@ import kafka from 'components/kafka/kafka'
 import bigdata from 'components/bigData/bigdata'
 import overview from 'components/overview/overview'
 import kafka2 from 'components/kafka2/kafka2'
+import kafka3 from 'components/kafka3/kafka3'
+import kafka4 from 'components/kafka4/kafka4'
 
 Vue.use(Router)
 
@@ -43,6 +45,14 @@ export default new Router({
     {
       path: '/kafka2',
       component: kafka2
+    },
+    {
+      path: '/kafka3',
+      component: kafka3
+    },
+    {
+      path: '/kafka4',
+      component: kafka4
     }
   ]
 })
