@@ -15,6 +15,7 @@
   import HeaderComponent from 'components/header'
   import signin from 'components/signin'
   import signup from 'components/signup'
+
   export default {
     data() {
       return {
@@ -65,18 +66,20 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-@import 'common/stylus/index'
-#app
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-.content
-  position: absolute
-  top: 72px
-  bottom: 0
-  width: 100%
-  padding-left: 210px
-  padding-top: 10px
-  overflow:hidden
-  z-index: -1
+  @import 'common/stylus/index'
+  #app
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  .content
+    position: absolute
+    top: 72px
+    bottom: 0
+    width: 100%
+    padding-left: 210px
+    padding-top: 10px
+    overflow:hidden
+    z-index: -1
+  .masker
+    background-color: rgba(255,255,255,1)
 </style>
