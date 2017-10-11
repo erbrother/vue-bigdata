@@ -59,12 +59,14 @@
           >
         </el-pagination>
       </el-col>  
+      <h1>{{this.count}}</h1>
     </el-row>
   </div>
 </template>
 <script>
   // import echarts from 'echarts'
   import 'echarts/map/js/china.js'
+  import {mapGetters} from 'vuex'
 
   export default {
     data() {
@@ -93,6 +95,11 @@
           total: 400
         }
       }
+    },
+    computed: {
+      ...mapGetters([
+        'count'
+      ])
     },
     methods: {
       handleEdit(index, row) {

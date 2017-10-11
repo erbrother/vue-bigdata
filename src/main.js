@@ -3,6 +3,7 @@ import App from './App'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import router from './router'
+import store from './store'
 // import VueSocketio from 'vue-socket.io'
 
 Vue.config.productionTip = false
@@ -14,5 +15,6 @@ Vue.use(ElementUI)
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

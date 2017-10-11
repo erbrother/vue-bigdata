@@ -9,10 +9,16 @@
       </el-col>
       <el-col :span="12"></el-col>
     </el-row>
+    <el-row>
+      <el-button type="primary" @click="addCount">点击添加计数</el-button>
+      <h1>{{this.count}}</h1>
+    </el-row>
   </div>
 </template>
 <script>
   import echarts from 'echarts'
+  import {mapGetters, mapMutations} from 'vuex'
+
   export default {
     created() {
       setTimeout(() => {
@@ -21,7 +27,19 @@
         this.initRadar()
       }, 200)
     },
+    mounted() {
+      console.log(this.count)
+    },
+    computed: {
+      ...mapGetters([
+        'count'
+      ])
+    },
     methods: {
+      addCount() {
+        console.log('success')
+        this.setCounter()
+      },
       initCanvas() {
         this.$refs.bar.width = this.$refs.bar.parentElement.clientWidth
         this.$refs.radar.width = this.$refs.radar.parentElement.clientWidth
@@ -146,7 +164,10 @@
         }
 
         radar.setOption(option)
-      }
+      },
+      ...mapMutations({
+        setCounter: 'SET_COUNTER'
+      })
     }
   }
 </script>

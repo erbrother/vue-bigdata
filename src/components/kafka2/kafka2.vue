@@ -1,51 +1,51 @@
 <template>
-    <container id="kafka2">
-          <div class='header-con'>
-              <p class='title'>我是标题我是标题</p>
-              <div class='time'>
-                 <i class='el-icon-time' style="width:18px; height:18px; margin-right:5px"></i>
-                 <span style='color:#fff'>{{time}}</span>
-              </div>
-          </div>
-          <ul class='title-con'>
-            <li class='title-info'>
-              <div>翻牌器1标题</div>
-              <div style='color:#c1a03a'>￥2,314,232</div>
-            </li>
-            <li class='title-info'>
-              <div>翻牌器2标题</div>
-              <div style='color:#c1a03a'>￥2,314,232</div>
-            </li>
-            <li class='title-info'>
-              <div>翻牌器3标题</div>
-              <div style='color:#c1a03a'>￥2,314,232</div>
-            </li>
-            <li class='title-info'>
-              <div>翻牌器4标题</div>
-              <div style='color:#c1a03a'>￥2,314,232</div>
-            </li>
-          </ul>
-          <ul class='chart-con'>
-            <li  class='wraper-chart'>
-              <div class='chart-title' style='font-size:48px; color:#d6a81e'>区域经济</div>
-              <canvas ref='mycanvas1' width="600" height="320" style="background: transparent"></canvas>
-            </li>
-            <li class='wraper-chart'>
-              <div class='chart-title' style='font-size:48px; color:#d6a81e'>区域经济</div>
-              <canvas ref='mycanvas2' width="600" height="320" style="background: transparent"></canvas>
-            </li>
-          </ul>
-          <ul class='chart-con'>
-            <li class='wraper-chart'>
-              <div class='chart-title' style='font-size:48px; color:#d6a81e'>区域经济</div>
-              <canvas ref='mycanvas3' width="600" height="320" style="background: transparent"></canvas>
-            </li>
-            <li>
-              <div class='chart-title' style='font-size:48px; color:#d6a81e'>区域经济</div>
-              <canvas ref='mycanvas4' width="600" height="320" style="background: transparent"></canvas>
-            </li>
-          </ul>
-    </container>
+  <container id="kafka2">
+        <div class='header-con'>
+            <p class='title'>我是标题我是标题</p>
+            <div class='time'>
+               <i class='el-icon-time' style="width:18px; height:18px; margin-right:5px"></i>
+               <span style='color:#fff'>{{time}}</span>
+            </div>
+        </div>
+        <ul class='title-con'>
+          <li class='title-info'>
+            <div>翻牌器1标题</div>
+            <div style='color:#c1a03a'>￥2,314,232</div>
+          </li>
+          <li class='title-info'>
+            <div>翻牌器2标题</div>
+            <div style='color:#c1a03a'>￥2,314,232</div>
+          </li>
+          <li class='title-info'>
+            <div>翻牌器3标题</div>
+            <div style='color:#c1a03a'>￥2,314,232</div>
+          </li>
+          <li class='title-info'>
+            <div>翻牌器4标题</div>
+            <div style='color:#c1a03a'>￥2,314,232</div>
+          </li>
+        </ul>
+        <ul class='chart-con'>
+          <li  class='wraper-chart'>
+            <div class='chart-title' style='font-size:48px; color:#d6a81e'>区域经济</div>
+            <canvas ref='mycanvas1' width="600" height="320" style="background: transparent"></canvas>
+          </li>
+          <li class='wraper-chart'>
+            <div class='chart-title' style='font-size:48px; color:#d6a81e'>区域经济</div>
+            <canvas ref='mycanvas2' width="600" height="320" style="background: transparent"></canvas>
+          </li>
+        </ul>
+        <ul class='chart-con'>
+          <li class='wraper-chart'>
+            <div class='chart-title' style='font-size:48px; color:#d6a81e'>区域经济</div>
+            <canvas ref='mycanvas3' width="600" height="320" style="background: transparent"></canvas>
+          </li>
+          <li>
+            <div class='chart-title' style='font-size:48px; color:#d6a81e'>区域经济</div>
+            <canvas ref='mycanvas4' width="600" height="320" style="background: transparent"></canvas>
+          </li>
+        </ul>
+  </container>
 </template>
 <script type="text/ecmascript-6">
 import echarts from 'echarts'

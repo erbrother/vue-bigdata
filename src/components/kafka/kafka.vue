@@ -50,7 +50,7 @@
     </div>
     <div class="wraper" style="left: 696px;top: 750px;">
       <div class="wraper-title">内存使用情况</div>
-    </div>   
+    </div>
     <!-- cpu展示 -->
     <div class="wraper" style="left: 1416px;top: 69px;z-index: 20">
       <div class="wraper-chart">
